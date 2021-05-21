@@ -1,0 +1,10 @@
+#userBoard {
+    font-weight: 900 !important;
+    font-size: 25px;
+    margin-left: 10px;
+}
+
+#add {
+    border: 2px solid gray;
+    border-radius: 10px;
+}
