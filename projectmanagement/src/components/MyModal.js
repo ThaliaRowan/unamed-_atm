@@ -1,6 +1,7 @@
 import React,{useState} from "react";
 import {Button, Modal, InputGroup, FormControl} from "react-bootstrap";
 import AddIcon from '@material-ui/icons/Add';
+import Project from "./Project";
 import axios from "axios";
 
 function MyModal() {
@@ -11,13 +12,23 @@ function MyModal() {
 
     const [name, setName] = useState("");
 
+    const [project, setProject] = useState([]);
+    
     const createProject = () => {
-        axios.post("http://localhost:3000/create", {
+        axios.post("http://localhost:3000/api/create", {
           name: name
         }).then(() => {
           console.log("Success")
         })
     }
+
+    const getProject = () => {
+      axios.get("http://localhost:3000/api").then((response) => {
+        setProject(response.data);
+        console.log(response)
+      })
+    }
+
   
     return (
       <>
@@ -51,13 +62,17 @@ function MyModal() {
             <Button variant="secondary" onClick={()=> {
               
               createProject();
+              getProject();
               handleClose();
             }}>
               Create
             </Button>
           </Modal.Footer>
         </Modal>
+        
+      <Project project={project} />
       </>
+
     );
   }
   

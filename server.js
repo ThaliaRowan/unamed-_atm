@@ -24,7 +24,7 @@ connection.connect(function(err) {
 })
 
 
-app.post("/create", (req, res) => { 
+app.post("/api/create", (req, res) => { 
     const name = req.body.name;
 
     connection.query("INSERT INTO project (name) VALUES (?)", [name],
@@ -39,6 +39,16 @@ app.post("/create", (req, res) => {
     )
 });
 
+
+app.get("/api", (req, res) => {
+    connection.query("SELECT * FROM project", (err, result) => {
+        if(err){
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    })
+});
 
 var PORT = process.env.PORT || 3000;
 
