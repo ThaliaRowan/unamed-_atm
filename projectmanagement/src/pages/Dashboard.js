@@ -9,7 +9,7 @@ function Dashboard(){
         <div>
             <Nav />
             <div>
-            
+            <Project />
             </div>
         </div>
     )
