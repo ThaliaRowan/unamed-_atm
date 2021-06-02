@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {Card} from "react-bootstrap";
 import axios from "axios";
+import "../project.css";
 
 function Project(){
     
@@ -15,15 +16,20 @@ function Project(){
       }, []);
   
     return(
-        <div>   
+        <div className="grid">   
+
                 {project.map(data => (
-                        <Card border="light" style={{ width: '18rem', height: "18rem" }}>
+                  <div className="row">
+                    <div className="col-3 col-sm-4 mb-3" style={{padding: "20px"}}>
+                      <Card classname="box" id="projCard" border="light" style={{ width: '18rem', height: "18rem" }} key={data.id}>
                         <Card.Header>{data.name}</Card.Header>
                         <Card.Body>
                         <Card.Text>
                         </Card.Text>
                         </Card.Body>
-                    </Card>
+                      </Card>
+                      </div>
+                    </div>
                 ))}                       
         </div>
     )
