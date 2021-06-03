@@ -13,7 +13,7 @@ function Project(){
         axios.get("http://localhost:3000/api").then((response) => {
           setProject(response.data);
         })
-      }, []);
+      }, [project]);
   
     return(
         <div className="grid">   
