@@ -1,0 +1,33 @@
+body {
+    overflow: hidden;
+}
+
+#imgDiv {
+ margin: 80px;
+}
+
+#intro {
+    font-size: 1.5rem;
+    
+}
+
+#textDiv {
+    padding-top: 40px;
+}
+
+#signup, #login {
+    width: 50%;
+    display: block;
+}
+
+#loginDiv, #signupDiv {
+    padding: 5px;
+}
+
+#titleDiv {
+    padding-top: 30%;
+}
+
+#title {
+    font-size: 5rem;
+}
