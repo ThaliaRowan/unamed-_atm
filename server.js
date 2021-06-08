@@ -23,6 +23,21 @@ connection.connect(function(err) {
     console.log("connection was successful, id: " + connection.threadId)
 })
 
+app.post("/api/register", (req,res) => {
+    const fullname = req.body.fullname;
+    const email = req.body.email;
+    const password = req.body.password;
+
+    connection.query("INSERT INTO users (fullname, email, password) VALUES (?,?,?)", [fullname, email, password],
+        (err, result) => {
+            if(err) {
+                console.log(err)
+            } else {
+                res.send('New User Inserted');
+            }
+        }
+    )
+})
 
 app.post("/api/create", (req, res) => { 
     const name = req.body.name;

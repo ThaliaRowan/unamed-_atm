@@ -23,7 +23,7 @@ function Home(){
                 </div>
                 <div>
                     <div id="signupDiv">      
-                    <Button variant="outline-secondary" id="signup">Signup</Button>
+                    <Button variant="outline-secondary" pat id="signup" >Signup</Button>
                     </div>
                     <div id="loginDiv">
                     <Button variant="outline-secondary" id="login">Login</Button>
