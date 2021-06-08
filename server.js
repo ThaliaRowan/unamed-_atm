@@ -37,6 +37,27 @@ app.post("/api/register", (req,res) => {
             }
         }
     )
+});
+
+
+app.post("/api/login", (req, res) => {
+    const email = req.body.email;
+    const password = req.body.password;
+
+    connection.query("SELECT * FROM users WHERE email = ? AND password = ? ", [email, password], 
+            (err, result) => {
+                if(err) {
+                    res.send({err: err})
+                } 
+                
+                if(result.length > 0){
+                    res.send({result: result})
+                } else {
+                    
+                    res.send({message: "Wrong email/password"});
+                }
+            }
+    )
 })
 
 app.post("/api/create", (req, res) => { 
@@ -53,6 +74,7 @@ app.post("/api/create", (req, res) => {
     
     )
 });
+
 
 
 app.get("/api", (req, res) => {
