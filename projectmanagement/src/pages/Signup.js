@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {Form, Button} from "react-bootstrap";
 import "../Signup.css";
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 function SignUp(){
 const [fullname, setFullname] = useState("");
@@ -56,7 +57,8 @@ const [password, setPassword] = useState("");
                 </div>
                 <div style={{paddingTop: "10px"}}>
                 <Form.Text className="text-muted">
-                    Already have an account? <a href="...">Login</a>
+                    Already have an account? 
+                    <Link to="/login" style={{ textDecoration: 'none' }}> Login</Link>
                 </Form.Text>
                 </div>
             </Form>

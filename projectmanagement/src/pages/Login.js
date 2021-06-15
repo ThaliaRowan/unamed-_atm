@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import "../Login.css";
 import {Form, Button} from "react-bootstrap";
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 
 function Login(){
@@ -50,7 +51,8 @@ function Login(){
                 </div>
                 <div style={{paddingTop: "10px"}}>
                 <Form.Text className="text-muted">
-                    Dont have an account? <a href="...">Sign Up</a>
+                    Don't have an account? 
+                    <Link to="/signup" style={{ textDecoration: 'none' }}> Sign Up</Link>
                 </Form.Text>
                 </div>
             </Form>

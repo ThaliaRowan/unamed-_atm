@@ -2,6 +2,7 @@ import React from "react";
 import {Row, Col, Image, Button} from "react-bootstrap";
 import Desk from "../assets/desk.jpg";
 import  "../Home.css";
+import { Link } from 'react-router-dom';
 
 function Home(){
     return(
@@ -22,11 +23,15 @@ function Home(){
                     <p id="intro">Make self-management easier</p>
                 </div>
                 <div>
-                    <div id="signupDiv">      
-                    <Button variant="outline-secondary" pat id="signup" >Signup</Button>
+                    <div id="signupDiv"> 
+                    <Link to="/signup" style={{ textDecoration: 'none' }}>    
+                        <Button variant="outline-secondary" id="signup">Sign Up</Button>
+                    </Link>     
                     </div>
                     <div id="loginDiv">
-                    <Button variant="outline-secondary" id="login">Login</Button>
+                    <Link to="/login" style={{ textDecoration: 'none' }}>
+                        <Button variant="outline-secondary" id="login">Login</Button>
+                    </Link>
                     </div>
                 </div>
                 </Col>
