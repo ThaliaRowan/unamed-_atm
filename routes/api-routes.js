@@ -22,14 +22,21 @@ module.exports = function(app){
     });
 
 
-    app.post("/api/register", function (req, res) {
+    app.post("/api/register",(req, res) => {
         
         db.User.create({
             fullname: req.body.fullname,
             email: req.body.email,
             password: req.body.password
-        }).then(function(dbUser){
-            res.json(dbUser)
-        });
+        }).then(() => {
+            res.redirect(307, "/api/login");
+        }).catch(err => {
+            res.status(401).json(err)
+        })
+    });
+
+
+    app.post("/api/login", (req,res) => {
+        res.json({});
     });
 }
