@@ -1,4 +1,5 @@
 
+const passport = require("passport");
 var db = require("../models");
 
 module.exports = function(app){
@@ -21,6 +22,20 @@ module.exports = function(app){
         });
     });
 
+    
+    app.post("/api/login", (req,res, next) => {
+        passport.authenticate("local", (err,user,info) => {
+            if(err) throw err;
+            if(!user) res.send("No user exist");
+            else {
+                req.login(user, err => {
+                    if(err) throw err;
+                    res.send("Successfully Authenticated");
+                    console.log(req.user)
+                })
+            }
+        })(req,res,next)
+    });
 
     app.post("/api/register",(req, res) => {
         
@@ -35,8 +50,8 @@ module.exports = function(app){
         })
     });
 
+    app.get("/user", (req, res)=> {
+        res.send(req.user)
+    })
 
-    app.post("/api/login", (req,res) => {
-        res.json({});
-    });
 }

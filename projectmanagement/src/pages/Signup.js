@@ -15,6 +15,8 @@ const [password, setPassword] = useState("");
             fullname: fullname,
             email: email,
             password:password
+        }, {
+            withCredentials: true,
         }).then(() => {
             console.log("Success");
         })
