@@ -18,7 +18,7 @@ function Board() {
                     </Col>
                 </Row>
                 <Row className="tableRow">
-                        <Table className="table" bordered>
+                        <Table className="table">
                             <thead>
                                 <tr>
                                 <th>To-do</th>
@@ -27,16 +27,18 @@ function Board() {
                                 </tr>
                             </thead>
                             <tbody className="tableB">
-                            <tr>
+                            <tr className="tableR">
                                     <td>
                                         <div className="tableD">
                                             write css
                                         </div>
                                     </td>
-                                    
-                                    <td></td>
-                                    
-                                    <td></td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+                                        
+                                    </td>
                             </tr>
                         </tbody>
                         </Table>
