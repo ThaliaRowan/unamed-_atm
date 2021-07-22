@@ -9,7 +9,7 @@ function Login(){
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [data, setData] = useState(null);
+    
 
     const LogIn = () => {
         axios.post("http://localhost:3000/api/login", {
@@ -23,14 +23,13 @@ function Login(){
     }
 
     const getUser = () => {
-        axios.get("http://localhost:3000/user", {
-                withCredentials: true,
-            
-        }).then((res) => {
-            console.log(res.data)
-            setData(res.data)
-        })
-    }
+       axios({
+           method: 'GET',
+           withCredentials: true,
+           url: "http://localhost:3000/api/user",
+       }).then((res) => console.log(res));
+    };
+
     return(
         <div id="box">
         <div id="container">
@@ -55,8 +54,9 @@ function Login(){
                 </Form.Group>
                 <div className="row justify-content-center">                        
                     <Button variant="primary" type="submit" id="button" onClick= {() => {
-                        LogIn();
+                        
                         getUser();
+                        LogIn();
                     }}>
                         Log In
                     </Button>

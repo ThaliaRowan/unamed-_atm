@@ -1,0 +1,23 @@
+#firstRow {
+    padding-top: 10px;
+    padding-bottom: 5px;
+
+}
+
+th {
+    text-align: center;
+}
+.table {
+    margin: 20px;
+    border: 1px solid gray;
+}
+.tableB {
+    height: 510px;
+}
+
+.tableD {
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: gainsboro;
+}

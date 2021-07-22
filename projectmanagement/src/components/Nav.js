@@ -8,7 +8,7 @@ function Nav(){
         <div>
            <Navbar expand="lg" variant="light" bg="light">
                 <Container>
-                    <Navbar.Brand href="#" id="userBoard">User's Board</Navbar.Brand>
+                    <Navbar.Brand id="userBoard">User's Board</Navbar.Brand>
                     <MyModal/>
 
                 </Container>

@@ -1,6 +1,6 @@
-
 const passport = require("passport");
-var db = require("../models");
+const db = require("../models");
+require("../config/passportConfig")(passport);
 
 module.exports = function(app){
 
@@ -50,7 +50,7 @@ module.exports = function(app){
         })
     });
 
-    app.get("/user", (req, res)=> {
+    app.get("/api/user", (req, res)=> {
         res.send(req.user)
     })
 
