@@ -13,7 +13,7 @@ const item = {
 
 const item2 = {
     id: v4(),
-    name: "do css"
+    name: "do javascript"
 }
 
 console.log(item)
@@ -23,7 +23,7 @@ function Board() {
     const [state, setState] = useState({
         "todo": {
             title: "Todo",
-            items: [item]
+            items: [item, item2]
         },
         "in-progress": {
             title: "In Progress",
@@ -35,6 +35,28 @@ function Board() {
         }
     })
 
+    const handleDragEnd = ({destination, source}) => {
+        console.log("from", source)
+        console.log("to", destination)
+
+        if (!destination){
+            return 
+        }
+
+        if(destination.index === source.index && destination.droppableId === source.droppableId){
+            return
+        }
+
+        const itemCopy = {...state[source.droppableId].items[source.index]}
+        setState(prev => {
+            prev = {...prev}
+            prev[source.droppableId].items.splice(source.index, 1)
+
+            prev[destination.droppableId].items.splice(destination.index, 0, itemCopy)
+
+            return prev
+        })
+    }
 
     return(
         <div>
@@ -52,7 +74,7 @@ function Board() {
                 </Row>
             
                     <div className="theboard">
-                      <DragDropContext onDragEnd={e => console.log(e)}>
+                      <DragDropContext onDragEnd={handleDragEnd}>
                         {_.map(state, (data, key) => {
                             return(
                                 <div key={key} className="col border border-gray" id={"column"}>
