@@ -1,19 +1,29 @@
 import React, {useEffect, useState} from "react";
 import {Row, Button, Col,Table, Navbar, Container} from "react-bootstrap";
 import "../Board.css";
+import {DragDropContext, Draggable, Droppable,} from "react-beautiful-dnd";
+import _ from "lodash";
+import {v4} from "uuid";
 
 
-const items = {
-    id: "jsgsttstrraa",
+const item = {
+    id: v4(),
     name: "do css"
 }
 
+const item2 = {
+    id: v4(),
+    name: "do css"
+}
+
+console.log(item)
+
 function Board() {
 
-    const [state, useState] = useState(initialState: {
+    const [state, setState] = useState({
         "todo": {
             title: "Todo",
-            items: []
+            items: [item]
         },
         "in-progress": {
             title: "In Progress",
@@ -40,10 +50,51 @@ function Board() {
                      <Button variant="secondary">New Task</Button>
                     </Col>
                 </Row>
-                <Row className="tableRow">
-                      
-              
-                </Row>
+            
+                    <div className="theboard">
+                      <DragDropContext onDragEnd={e => console.log(e)}>
+                        {_.map(state, (data, key) => {
+                            return(
+                                <div key={key} className="col border border-gray" id={"column"}>
+                                    <h3>{data.title}</h3>
+                                    <Droppable droppableId={key}>
+                                        {(provided) => {
+                                            return(
+                                                <div 
+                                                ref={provided.innerRef}
+                                                {...provided.droppableProps}
+                                                className={"droppable-col"}
+                                                >
+                                                    {data.items.map((el, index) => {
+                                                        return( 
+                                                        <Draggable key={el.id} index={index} draggableId={el.id}>
+                                                           {(provided) => {
+                                                               return(
+                                                                   <div ref={provided.innerRef}
+                                                                            {...provided.draggableProps}
+                                                                            {...provided.dragHandleProps}
+
+                                                                   >
+                                                                       <div className="colData">
+                                                                       {el.name}
+                                                                       </div>
+                                                                    
+                                                                   </div>
+                                                               )
+                                                           }} 
+                                                        </Draggable>                     
+                                                        )
+                                                    })}    
+                                                </div>
+                                            )
+                                        }}
+                                    </Droppable>
+                                </div>
+                            )
+                        })}
+                      </DragDropContext>
+                    </div>
+                
             </div>
         </div>
     )
