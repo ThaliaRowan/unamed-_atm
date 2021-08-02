@@ -1,37 +1,29 @@
-import React, {useRef, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Row, Button, Col,Table, Navbar, Container} from "react-bootstrap";
 import "../Board.css";
 
+
+const items = {
+    id: "jsgsttstrraa",
+    name: "do css"
+}
+
 function Board() {
 
-    const [isTrue, setTrue] = useState(false);
-
-    let draggables = useRef();
-    const container = useRef();
-
-
-        function addDrag(){
-           setTrue(true);
+    const [state, useState] = useState(initialState: {
+        "todo": {
+            title: "Todo",
+            items: []
+        },
+        "in-progress": {
+            title: "In Progress",
+            items: []
+        },
+        "done": {
+            title: "Done",
+            items: []
         }
-
-        function removeDrag(){
-            setTrue(false)
-        }
-
-
-        useEffect(() => {
-
-            window.addEventListener('dragstart', addDrag);
-            window.addEventListener('dragend', removeDrag);
-            return () => {
-                
-            window.removeEventListener('dragstart', addDrag);
-            window.addEventListener('dragend', removeDrag);
-            }
-
-
-        }, []);
-
+    })
 
 
     return(
@@ -49,34 +41,8 @@ function Board() {
                     </Col>
                 </Row>
                 <Row className="tableRow">
-                        <Table className="table">
-                            <thead>
-                                <tr>
-                                <th>To-do</th>
-                                <th>In progress</th>
-                                <th>Done</th>
-                                </tr>
-                            </thead>
-                            <tbody className="tableB">
-                            <tr className="tableR">
-                                    <td  className="draggable" ref={container} >
-                                        <div className={ isTrue ? "dragging" : "tableD"} draggable="true" ref={draggables}>
-                                            write css
-                                        </div>
-                                    </td>
-                                    <td >
-                                        <div draggable="true" className="draggable">
-
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div  draggable="true" className="draggable">
-
-                                        </div>
-                                    </td>
-                            </tr>
-                        </tbody>
-                        </Table>
+                      
+              
                 </Row>
             </div>
         </div>
