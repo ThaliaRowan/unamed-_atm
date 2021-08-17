@@ -22,6 +22,16 @@ module.exports = function(app){
         });
     });
 
+
+    app.post("/api/createtask", function(req, res) {
+        db.Task.create({
+            taskname: req.body.taskname
+        }).then(function(dbTask){
+            console.log(dbTask);
+            res.json(dbTask);
+        })
+    })
+
     
     app.post("/api/login", (req,res, next) => {
         passport.authenticate("local", (err,user,info) => {

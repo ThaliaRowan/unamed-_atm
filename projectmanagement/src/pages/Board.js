@@ -4,6 +4,7 @@ import "../Board.css";
 import {DragDropContext, Draggable, Droppable,} from "react-beautiful-dnd";
 import _ from "lodash";
 import {v4} from "uuid";
+import Newtask from "../components/Newtask";
 
 
 const item = {
@@ -69,7 +70,7 @@ function Board() {
             <div>
                 <Row id="firstRow">
                     <Col md={{ span: 10, offset: 10 }}>
-                     <Button variant="secondary">New Task</Button>
+                     <Newtask />
                     </Col>
                 </Row>
             
