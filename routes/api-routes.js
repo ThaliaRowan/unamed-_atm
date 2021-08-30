@@ -32,6 +32,14 @@ module.exports = function(app){
         })
     })
 
+    app.get("/api/tasks", function(req,res) {
+        
+        db.Task.findAll({}).then(function(dbTask) {
+            res.json(dbTask)
+        });
+    });
+
+
     
     app.post("/api/login", (req,res, next) => {
         passport.authenticate("local", (err,user,info) => {

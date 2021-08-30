@@ -10,7 +10,7 @@ function Home(){
             <Row>
                 <Col>
                     <div id="imgDiv">
-                        <Image src={Desk} style={{width: "50rem"}} />
+                        <Image src={Desk} style={{width: "50rem"}} id="Homeimg" />
                     </div>
                 </Col>
                 <Col>

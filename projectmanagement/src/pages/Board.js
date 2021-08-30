@@ -5,7 +5,7 @@ import {DragDropContext, Draggable, Droppable,} from "react-beautiful-dnd";
 import _ from "lodash";
 import {v4} from "uuid";
 import Newtask from "../components/Newtask";
-
+import axios from "axios";
 
 const item = {
     id: v4(),
@@ -21,10 +21,22 @@ console.log(item)
 
 function Board() {
 
+    
+    const [Task, setTask] = useState([]);
+
+
+    useEffect(() => {
+        axios.get("http://localhost:3000/api/tasks").then((response) => {
+          setTask(response.data);
+        })
+      }, [Task]);
+
+        console.log(Task);
+
     const [state, setState] = useState({
         "todo": {
             title: "Todo",
-            items: [item, item2]
+            items: [Task]
         },
         "in-progress": {
             title: "In Progress",
@@ -99,7 +111,7 @@ function Board() {
 
                                                                    >
                                                                        <div className="colData">
-                                                                       {el.name}
+                                                                       {el.taskname}
                                                                        </div>
                                                                     
                                                                    </div>
